@@ -75,7 +75,7 @@
 
 <nav id="sidebar" class="sidebar" aria-label="Table of contents">
     <div class="sidebar-scrollbox">
-        <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">2.1.</strong> For Ubuntu Server</a></li><li class="chapter-item expanded "><a href="centos.html"><strong aria-hidden="true">2.2.</strong> For Centos Server</a></li></ol></li><li class="spacer"></li>
+        <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html" class="active"><strong aria-hidden="true"></strong> Introduction</a></li><li class="chapter-item expanded "><a href="pre-installation.html" class="active"><strong aria-hidden="true">1.</strong> Pre-installation Checklist</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">2.1.</strong> For Ubuntu Server</a></li><li class="chapter-item expanded "><a href="centos.html"><strong aria-hidden="true">2.2.</strong> For Centos Server</a></li></ol></li><li class="spacer"></li>
         
         <li class="chapter-item expanded "><a href="../encrypt_arclight/index.html"><strong aria-hidden="true">3.</strong> Encrypt Arclight (Optional)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../encrypt_arclight/cert.html"><strong aria-hidden="true">3.1.</strong> Using Let's Encrypt</a></li><li class="chapter-item expanded "><a href="../encrypt_arclight/self-cert.html"><strong aria-hidden="true">3.2.</strong> Self-signed certificate</a></li></ol></li>
         
@@ -203,10 +203,10 @@ systemctl restart firewalld
 <p>We will need a MySQL database for Arclight Dashboard to work with. To log into MySQL use the following command:</p>
 <pre><code class="language-sh">sudo mysql -u root</code></pre>
 
-<p>Once logged in, create a new database. I will name it arclight.</p>
+<p>Once logged in, create a new database. We will name it arclight.</p>
 <pre><code class="language-sh">CREATE DATABASE arclight;</code></pre>
 
-<p>Now create a user for Arclight Dashboard to use. You could use the root user and password, but that is never advised. I will create a new user named arclight. Be sure to change the password value.</p>
+<p>Now create a user for Arclight Dashboard to use. You could use the root user and password, but that is never advised. We will create a new user named arclight. Be sure to change the password value.</p>
 <pre><code class="language-sh">CREATE USER 'arclight'@'localhost' IDENTIFIED BY 'password';</code></pre>
 
 <p>Change the permissions of the new user to have full access to the database tables.</p>

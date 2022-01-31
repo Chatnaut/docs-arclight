@@ -76,7 +76,7 @@
 
 <nav id="sidebar" class="sidebar" aria-label="Table of contents">
     <div class="sidebar-scrollbox">
-        <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting_started/ubuntu.html"><strong aria-hidden="true">2.1.</strong> For Ubuntu Server</a></li><li class="chapter-item expanded "><a href="getting_started/centos.html"><strong aria-hidden="true">2.2.</strong> For Centos Server</a></li></ol></li><li class="spacer"></li>
+        <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html" class="active"><strong aria-hidden="true"></strong> Introduction</a></li><li class="chapter-item expanded "><a href="pre-installation.html" class="active"><strong aria-hidden="true">1.</strong> Pre-installation Checklist</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting_started/ubuntu.html"><strong aria-hidden="true">2.1.</strong> For Ubuntu Server</a></li><li class="chapter-item expanded "><a href="getting_started/centos.html"><strong aria-hidden="true">2.2.</strong> For Centos Server</a></li></ol></li><li class="spacer"></li>
         
         <li class="chapter-item expanded "><a href="encrypt_arclight/index.html"><strong aria-hidden="true">3.</strong> Encrypt Arclight (Optional)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="encrypt_arclight/cert.html"><strong aria-hidden="true">3.1.</strong> Using Let's Encrypt</a></li><li class="chapter-item expanded "><a href="encrypt_arclight/self-cert.html"><strong aria-hidden="true">3.2.</strong> Self-signed certificate</a></li></ol></li>
         
@@ -160,6 +160,47 @@ for searching API.</li>
 <li><a href="https://github.com/Chatnaut/Arclight/issues">Issue tracker</a></li>
 </ul>
 <p><img src="https://i.imgur.com/G6y7Qov.png" alt="logo" /></p>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="introduction"><a class="header" href="#introduction">Pre-installation Checklist</a></h1>
+<h2>Check that your CPU supports hardware virtualization</h2>
+<p>To run Arclight, you need a processor that supports hardware virtualization. Intel and AMD both have developed extensions for their processors, deemed respectively Intel VT-x (code name Vanderpool) and AMD-V (code name Pacifica). To see if your processor supports one of these, you can review the output from this command: </p>
+<pre><code class="language-sh">egrep -c '(vmx|svm)' /proc/cpuinfo</code></pre>
+
+<ul>
+<p>If 0 it means that your CPU doesn't support hardware virtualization. </p>
+<p>If 1 or more it does - but you still need to make sure that virtualization is enabled in the BIOS. </p>
+</ul>
+
+<p>Alternatively, you may execute: </p>
+<pre><code class="language-sh">kvm-ok </code></pre>
+<p>which may provide an output like this: </p>
+<code class="language-sh">INFO: /dev/kvm exists
+    KVM acceleration can be used
+    </code>
+
+<h2>Use a 64 bit kernel (if possible)</h2>
+<p>Running a 64 bit kernel on the host operating system is recommended but not required. </p>
+
+<ul>
+<p>1. To serve more than 2GB of RAM for your VMs, you must use a 64-bit kernel. On a 32-bit kernel install, you'll be limited to 2GB RAM at maximum for a given VM. </p>
+<p>2. Also, a 64-bit system can host both 32-bit and 64-bit guests. A 32-bit system can only host 32-bit guests.  </p>
+</ul>
+
+<p>To see if your processor is 64-bit, you can run this command: </p>
+<pre><code class="language-sh">egrep -c ' lm ' /proc/cpuinfo</code></pre>
+
+<ul>
+<p>If 0 is printed, it means that your CPU is not 64-bit. </p>
+<p>If 1 or higher, it is. Note: lm stands for Long Mode which equates to a 64-bit CPU. </p>
+</ul>
+
+<p>Now see if your running kernel is 64-bit, just issue the following command: </p>
+<pre><code class="language-sh">uname -m</code></pre>
+
+<p>x86_64 indicates a running 64-bit kernel. If you use see i386, i486, i586 or i686, you're running a 32-bit kernel.
+
+    Note: x86_64 is synonymous with amd64. </p>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="building-crosvm"><a class="header" href="#getting_started">Getting Started</a></h1>
@@ -202,10 +243,10 @@ for searching API.</li>
 <p>We will need a MySQL database for Arclight Dashboard to work with. To log into MySQL use the following command:</p>
 <pre><code class="language-sh">sudo mysql -u root</code></pre>
 
-<p>Once logged in, create a new database. I will name it arclight.</p>
+<p>Once logged in, create a new database. We will name it arclight.</p>
 <pre><code class="language-sh">CREATE DATABASE arclight;</code></pre>
 
-<p>Now create a user for Arclight Dashboard to use. You could use the root user and password, but that is never advised. I will create a new user named arclight. Be sure to change the password value.</p>
+<p>Now create a user for Arclight Dashboard to use. You could use the root user and password, but that is never advised. We will create a new user named arclight. Be sure to change the password value.</p>
 <pre><code class="language-sh">CREATE USER 'arclight'@'localhost' IDENTIFIED BY 'password';</code></pre>
 
 <p>Change the permissions of the new user to have full access to the database tables.</p>
@@ -284,10 +325,10 @@ systemctl restart firewalld
 <p>We will need a MySQL database for Arclight Dashboard to work with. To log into MySQL use the following command:</p>
 <pre><code class="language-sh">sudo mysql -u root</code></pre>
 
-<p>Once logged in, create a new database. I will name it arclight.</p>
+<p>Once logged in, create a new database. We will name it arclight.</p>
 <pre><code class="language-sh">CREATE DATABASE arclight;</code></pre>
 
-<p>Now create a user for Arclight Dashboard to use. You could use the root user and password, but that is never advised. I will create a new user named arclight. Be sure to change the password value.</p>
+<p>Now create a user for Arclight Dashboard to use. You could use the root user and password, but that is never advised. We will create a new user named arclight. Be sure to change the password value.</p>
 <pre><code class="language-sh">CREATE USER 'arclight'@'localhost' IDENTIFIED BY 'password';</code></pre>
 
 <p>Change the permissions of the new user to have full access to the database tables.</p>
@@ -316,7 +357,7 @@ systemctl restart firewalld
 With the Apache web server on Ubuntu you can enable HTTPS traffic using the following command:</p>
 <pre><code class="language-sh">sudo a2enmod ssl</code></pre>
 
-<p>If you are using a domain name, you can use a Certificate Authority such as Let’s Encrypt to create a free validated SSL certificate. To get started we will need to create an Apache site configuration file for your domain. I will using the domain server1.arclight.org for this example. The new config file should end with the .conf extension and be located in the <code>/etc/apache2/sites-available/</code> directory. To create a new file for your domain use the following command, and be sure to change the domain name:</p>
+<p>If you are using a domain name, you can use a Certificate Authority such as Let’s Encrypt to create a free validated SSL certificate. To get started we will need to create an Apache site configuration file for your domain. We will using the domain server1.arclight.org for this example. The new config file should end with the .conf extension and be located in the <code>/etc/apache2/sites-available/</code> directory. To create a new file for your domain use the following command, and be sure to change the domain name:</p>
 <pre><code class="language-sh">sudo nano /etc/apache2/sites-available/server1.arclight.org.conf</code></pre>
 
 <p>We will just be adding just the minimum information in the configuration file. The first line below < VirtualHost *:80> tells Apache that this configuration file will be used for HTTP traffic. When we configure Let’s Encrypt, the HTTPS connection (port 443) will be configured automatically. The second line ServerName server1.arclight.org tells Apache what domain name it should be listening for to apply this configuration. The third line DocumentRoot <code>/var/www/html/arclight/</code> indicates the root location of the web site files and that should be the filepath for your files.</p>
