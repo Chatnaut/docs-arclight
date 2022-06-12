@@ -1,0 +1,21 @@
+
+{
+    "name": "arclight",
+    "version": "2.0.0",
+    "release-date": "01-07-2022",
+    "extension":"major",
+    "state": "stable",
+    "license": "MIT",
+    "description": "Build power and intelligence in to your application.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Chatnaut/Arclight.git"
+    },
+    "bugs": {
+      "url": "https://github.com/Chatnaut/Arclight/issues"
+    },
+    "website": "https://cloud.chatnaut.com/app_af7e37e925e84bf191ef86b7b4990b69#/arclight",
+    "arc api": {
+      "version": "1.0.0"
+    }
+  }
