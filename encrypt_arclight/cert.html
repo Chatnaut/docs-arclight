@@ -297,7 +297,7 @@
 
             <p>
               We will just be adding just the minimum information in the
-              configuration file. The first line below < VirtualHost *:80> tells
+              configuration file. The first line below <code><VirtualHost *:80></code> tells
               Apache that this configuration file will be used for HTTP traffic.
               When we configure Let’s Encrypt, the HTTPS connection (port 443)
               will be configured automatically. The second line ServerName
@@ -308,8 +308,11 @@
               filepath for your files.
             </p>
             <p>
-              < VirtualHost *:80> ServerName server1.arclight.org DocumentRoot
-              <code>/var/www/html/arclight/</code>
+              <pre>
+                <VirtualHost *:80>
+                  ServerName server1.arclight.org
+                  DocumentRoot /var/www/html/arclight/
+                </VirtualHost>
             </p>
             <p>
               Once you add the above information to the configuration file and
