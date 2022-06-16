@@ -307,13 +307,13 @@
               root location of the web site files and that should be the
               filepath for your files.
             </p>
-            <pre>
-                &lt;VirtualHost *:80>
-                  ServerName mydomain.com
-                  DocumentRoot /var/www/html/arclight/
-                &lt;/VirtualHost>
-              </pre>
-            </p>
+            <pre><code class="language-sh">systemctl start mariadb
+              &lt;VirtualHost *:80>
+              ServerName mydomain.com
+              DocumentRoot /var/www/html/arclight/
+            &lt;/VirtualHost>
+            </code></pre>
+            
             <p>
               Once you add the above information to the configuration file and
               save it, we will then need to enable the configuration file in
