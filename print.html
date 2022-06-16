@@ -741,7 +741,7 @@ systemctl restart firewalld
 
             <p>
               We will just be adding just the minimum information in the
-              configuration file. The first line below < VirtualHost *:80> tells
+              configuration file. The first line below <code>&lt;VirtualHost *:80></code> tells
               Apache that this configuration file will be used for HTTP traffic.
               When we configure Let’s Encrypt, the HTTPS connection (port 443)
               will be configured automatically. The second line ServerName
@@ -751,10 +751,13 @@ systemctl restart firewalld
               root location of the web site files and that should be the
               filepath for your files.
             </p>
-            <p>
-              < VirtualHost *:80> ServerName mydomain.com DocumentRoot
-              <code>/var/www/html/arclight/</code>
-            </p>
+            <pre><code class="language-sh">
+&lt;VirtualHost *:80>
+ ServerName mydomain.com
+ DocumentRoot /var/www/html/arclight/
+&lt;/VirtualHost>
+            </code></pre>
+            
             <p>
               Once you add the above information to the configuration file and
               save it, we will then need to enable the configuration file in
@@ -778,10 +781,10 @@ systemctl restart firewalld
 
             <p>
               To automate the Let’s Encrypt certificate using Apache we will
-              need to install the python-certbot-apache package. Use the
+              need to install the python3-certbot-apache package. Use the
               following command:
             </p>
-            <pre><code class="language-sh">sudo apt install python-certbot-apache</code></pre>
+            <pre><code class="language-sh">sudo apt install python3-certbot-apache</code></pre>
 
             <p>
               To create the SSL Certificate and Apache configuration file run
