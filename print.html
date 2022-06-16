@@ -731,13 +731,13 @@ systemctl restart firewalld
               Authority such as Let’s Encrypt to create a free validated SSL
               certificate. To get started we will need to create an Apache site
               configuration file for your domain. We will using the domain
-              server1.arclight.org for this example. The new config file should
+              mydomain.com for this example. The new config file should
               end with the .conf extension and be located in the
               <code>/etc/apache2/sites-available/</code> directory. To create a
               new file for your domain use the following command, and be sure to
               change the domain name:
             </p>
-            <pre><code class="language-sh">sudo nano /etc/apache2/sites-available/server1.arclight.org.conf</code></pre>
+            <pre><code class="language-sh">sudo nano /etc/apache2/sites-available/mydomain.com.conf</code></pre>
 
             <p>
               We will just be adding just the minimum information in the
@@ -745,14 +745,14 @@ systemctl restart firewalld
               Apache that this configuration file will be used for HTTP traffic.
               When we configure Let’s Encrypt, the HTTPS connection (port 443)
               will be configured automatically. The second line ServerName
-              server1.arclight.org tells Apache what domain name it should be
+              mydomain.com tells Apache what domain name it should be
               listening for to apply this configuration. The third line
               DocumentRoot <code>/var/www/html/arclight/</code> indicates the
               root location of the web site files and that should be the
               filepath for your files.
             </p>
             <p>
-              < VirtualHost *:80> ServerName server1.arclight.org DocumentRoot
+              < VirtualHost *:80> ServerName mydomain.com DocumentRoot
               <code>/var/www/html/arclight/</code>
             </p>
             <p>
@@ -761,7 +761,7 @@ systemctl restart firewalld
               Apache using the a2ensite command. To do that run the following
               command, be sure to use your domain name:
             </p>
-            <pre><code class="language-sh">sudo a2ensite server1.arclight.org</code></pre>
+            <pre><code class="language-sh">sudo a2ensite mydomain.com</code></pre>
 
             <p>
               When Apache is only used for the arclight it would be a good idea
@@ -789,19 +789,19 @@ systemctl restart firewalld
               asked for an email address and you will be given an option to
               either redirect all traffic to the HTTPS protocol or not.
             </p>
-            <pre><code class="language-sh">sudo certbot --apache -d server1.arclight.org</code></pre>
+            <pre><code class="language-sh">sudo certbot --apache -d mydomain.com</code></pre>
 
             <p>
               Now login to your Arclight Dashboard. Go to the settings page and
               add the location of the Let’s Encrypt certificate file and key
               file and submit your changes. Below is the location created for
-              server1.arclight.org Certificate file:
+              mydomain.com Certificate file:
               <code
-                >/etc/letsencrypt/live/server1.arclight.org/fullchain.pem</code
+                >/etc/letsencrypt/live/mydomain.com/fullchain.pem</code
               >
               Key file:
               <code
-                >/etc/letsencrypt/live/server1.arclight.org/privkey.pem</code
+                >/etc/letsencrypt/live/mydomain.com/privkey.pem</code
               >
 
               The permissions for the certificates are tied to the root user.
