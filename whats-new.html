@@ -162,9 +162,6 @@
             <a href="whats-new.html">What's New !!</a>
           </li>
           <li class="chapter-item expanded">
-            <a href="whats-new.html">What's New !!</a>
-          </li>
-          <li class="chapter-item expanded">
             <a href="api.html">API Documentation</a>
           </li>
           <li class="chapter-item expanded">
@@ -283,45 +280,44 @@
                 >What's new in Arclight Latest Version</a
               >
             </h1>
-            <h4>Changelog</h4>
+            <h2>Changelog</h2>
 [2.0.0] - 10.Aug.2022
-*Official Stable release of the Arclight:
-Tested with Ubuntu 18.04 LTS on IBM Cloud bare metal https://cloud.ibm.com/gen1/infrastructure/provision/bm)
-Tested with Ubuntu 20.04 LTS on AWS C5 & C5n Bare Metal Instance
-
-*Now support Ubuntu major versions like 18.04 and 20.04
-*Added Bare Metal provisioning support
-*Users can now ssh host and other remote servers securely with arclight's in-built SSH client
-*Added Modules to the dashboard
-*Implementation of Arclight's own api which is used to communicate with the Arclight server and the database
-*Added new signup and signin page for user validation and authentication.
-*Added all-in-one certificate management for the Arclight server
-*Fixed issue where noVNC is unable to get certificate paths other than in /etc/ssl/self.pem
-*Added custom tailwind module for future use
-*Arclight is now using MongoDB as its database which is more scalable and faster than MySQL
-*Added startup bash script to automatically install all the dependencies and linux distro packages required for Arclight to work
-*Redesigned the initial setup page of Arclight to a single configuration page with less options
-*Minimized the number of pages by using single page for all the settings
-*Modified sidebar menu, structured for future use of multiple host machines (clustering)
-*Added scrollable events log that will list all the events that occurred for a virtual machine.
-*Improved performance of windows instances.
-*fixed Windows 10 CPU bug where it ignores extra CPU cores.
-*Added Arc API health checker.
-*Improved how virtual machines are created by adding better error notifications, breaking the process into several steps of creation to handle errors better.
-*Improved updating process. Now instead of git pull, fetching the origin and reseting it. This will override any changes to local files.
-*Modified user sidebar navigation to include just Host, Virtual Machines, Storage, and Networking, simplifying the menu
-*Creating a new vm, storage pool, storage volume, and network fall on their respective pages
-*Improved layout of the noVNC connection on domain-single.php
-*Hid the XML on the domain-single.php page until user wants to edit it. Preventing accidental changes to guest
-*Improved layout of the Host page with additional Information such as uptime and libvirt version
-*Improved layout of the instance provisioning modal with extra Advanced CPU options
-*Automactically notify users of any updates to Arclight with a notification bar at the top of the page.
-*Increased the number of error notifications that exist
-*Changes to the HTML/CSS theme have improved scrollbar apperance and better use of web page realestate
-*The noVNC connection is loaded from an authenticated web page.
-*The tokens for the noVNC connection are now 100 character random strings, which change everytime a VM page is loaded (domain-single.php)
-*The console preview on the domain-single.php is now a live noVNC connection to the machine rather than a static image
-
+<h4>Official Stable release of the Arclight:</h4>
+<li>Tested with Ubuntu 18.04 LTS on IBM Cloud bare metal https://cloud.ibm.com/gen1/infrastructure/provision/bm)</li>
+<li>Tested with Ubuntu 20.04 LTS on AWS C5 & C5n Bare Metal Instance</li>
+<li>Now support Ubuntu major versions like 18.04 and 20.04
+</li><li>Added Bare Metal provisioning support
+</li><li>Users can now ssh host and other remote servers securely with arclight's in-built SSH client
+</li><li>Added Modules to the dashboard
+</li><li>Implementation of Arclight's own api which is used to communicate with the Arclight server and the database
+</li><li>Added new signup and signin page for user validation and authentication.
+</li><li>Added all-in-one certificate management for the Arclight server
+</li><li>Fixed issue where noVNC is unable to get certificate paths other than in /etc/ssl/self.pem
+</li><li>Added custom tailwind module for future use
+</li><li>Arclight is now using MongoDB as its database which is more scalable and faster than MySQL
+</li><li>Added startup bash script to automatically install all the dependencies and linux distro packages required for Arclight to work
+</li><li>Redesigned the initial setup page of Arclight to a single configuration page with less options
+</li><li>Minimized the number of pages by using single page for all the settings
+</li><li>Modified sidebar menu, structured for future use of multiple host machines (clustering)
+</li><li>Added scrollable events log that will list all the events that occurred for a virtual machine.
+</li><li>Improved performance of windows instances.
+</li><li>fixed Windows 10 CPU bug where it ignores extra CPU cores.
+</li><li>Added Arc API health checker.
+</li><li>Improved how virtual machines are created by adding better error notifications, breaking the process into several steps of creation to handle errors better.
+</li><li>Improved updating process. Now instead of git pull, fetching the origin and reseting it. This will override any changes to local files.
+</li><li>Modified user sidebar navigation to include just Host, Virtual Machines, Storage, and Networking, simplifying the menu
+</li><li>Creating a new vm, storage pool, storage volume, and network fall on their respective pages
+</li><li>Improved layout of the noVNC connection on domain-single.php
+</li><li>Hid the XML on the domain-single.php page until user wants to edit it. Preventing accidental changes to guest
+</li><li>Improved layout of the Host page with additional Information such as uptime and libvirt version
+</li><li>Improved layout of the instance provisioning modal with extra Advanced CPU options
+</li><li>Automactically notify users of any updates to Arclight with a notification bar at the top of the page.
+</li><li>Increased the number of error notifications that exist
+</li><li>Changes to the HTML/CSS theme have improved scrollbar apperance and better use of web page realestate
+</li><li>The noVNC connection is loaded from an authenticated web page.
+</li><li>The tokens for the noVNC connection are now 100 character random strings, which change everytime a VM page is loaded (domain-single.php)
+</li><li>The console preview on the domain-single.php is now a live noVNC connection to the machine rather than a static image
+</li>
           </main>
 
           <nav class="nav-wrapper" aria-label="Page navigation">
