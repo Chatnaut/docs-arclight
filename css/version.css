@@ -3,7 +3,8 @@
 .des1 {
 	border-radius: 50px;
 	width: 10rem;
-	height: 4rem;
+	height: 3rem;
+  vertical-align: text-bottom;
 	border: none;
 	outline: none;
 	cursor: pointer;
