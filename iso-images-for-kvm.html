@@ -230,21 +230,27 @@
       <div id="content" class="content">
         <main>
           <h1 id="contributing">
-            <a class="header" href="#contributing">ISO images for KVM machines</a>
+            <a class="header" href="#contributing">ISO images for virtual machines</a>
           </h1>
-          <!-- <h2 id="intro"><a class="header" href="#intro">Intro</a></h2> -->
+          <h2>Using AMI uploader</h2>
           <p>
-            When getting started with KVM virtual machines, one common
-            question is how do I get ISO image files used to install the
-            operating systems in the virtual machines. The default location
-            that Libvirt uses as a storage pool for KVM virtual machines is
-            the <code>/var/lib/libvirt/images/</code> directory. You will need
+            You can upload custom ISO images for virtual machines and bare metals using the AMI (Arclight Machine Image)
+            uploader tool. But first you need to increase the PHP upload size to allow for larger images. You can do
+            this by editing the <code>php.ini</code> file. </p>
+          <p>Follow the instructions <a
+              href="https://www.cyberciti.biz/faq/increase-file-upload-size-limit-in-php-apache-app/">given here.</a>
+          </p>
+          <p>Now register the storage pool with the following path in storage section (dashboard):</p>
+          <pre><code class="language-bash">/var/www/html/arclight/pages/ami/builder/images</code></pre>
+          <p>Upload the custom ISO using AMI uploader and it will be available in the storage pool.</p>
+          <h2>With wget</h2>
+          <p>You can simple wget the ISO image and upload it to the libvirt default storage pool
+            <code>/var/lib/libvirt/images/</code> directory. You will need
             to download the ISO files using a command such as wget. Find the
             URL of the ISO from from the vendor, for example
             <a
               href="http://releases.ubuntu.com/18.04.1/ubuntu-18.04.1-live-server-amd64.iso">http://releases.ubuntu.com/18.04.1/ubuntu-18.04.1-live-server-amd64.iso</a>
           </p>
-
           <p>
             You will need to switch your user account to the root user:
             Navigate to the <code>/var/lib/libvirt/images/</code> directory:
