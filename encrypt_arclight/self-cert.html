@@ -248,13 +248,6 @@
             following command:
           </p>
           <pre><code class="language-sh">sudo a2ensite default-ssl.conf</code></pre>
-
-          <p>
-            You will need to restart/reload the Apache web server to apply the
-            SSL connection. Use the following command:
-          </p>
-          <pre><code class="language-sh">sudo systemctl restart apache2</code></pre>
-
           <p>To create the certificate for the
             arclight navigate to the <code>/etc/ssl/</code> directory.
           </p>
@@ -272,30 +265,35 @@
           <pre><code class="language-sh">
 &lt;IfModule mod_ssl.c>
   &lt;VirtualHost *:443>
-  ServerName your_server_ip
-  DocumentRoot /var/www/html/arclight/
-  
-  SSLEngine on
-  SSLCertificateFile /etc/ssl/self.pem
-  SSLCertificateKeyFile /etc/ssl/self.pem
-          &lt;Location "/api/">
-                  ProxyPreserveHost On
-                  ProxyPass http://localhost:3000/
-                  ProxyPassReverse http://localhost:3000/
-          &lt;/Location>
-  &lt;Directory /var/www/html/arclight>
-      Options Indexes FollowSymLinks
-      AllowOverride All
-      Require all granted
-  &lt;/Directory>
+    ServerName your_server_ip
+    DocumentRoot /var/www/html/arclight/
+    
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/self.pem
+    SSLCertificateKeyFile /etc/ssl/self.pem
+            &lt;Location "/api/">
+                    ProxyPreserveHost On
+                    ProxyPass http://localhost:3000/
+                    ProxyPassReverse http://localhost:3000/
+            &lt;/Location>
+    &lt;Directory /var/www/html/arclight>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory>
   &lt;/VirtualHost>
-  &lt;/IfModule>
+&lt;/IfModule>
                           </code></pre>
           <p>If your current virtual host configuration does not match up, then update it accordingly. After, save and
             exit the text editor. Then, validate your changes:</p>
           <pre><code class="language-sh">sudo apache2ctl configtest</code></pre>
-          <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
+          <p>
+            You will need to restart/reload the Apache web server to apply the
+            chnages. Use the following command:
           </p>
+          <pre><code class="language-sh">sudo systemctl restart apache2</code></pre>
+          <!-- <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
+          </p> -->
 
           <!-- <p>
             If you have already used arclight, you will need to kill the
@@ -309,11 +307,11 @@
             29226, you would kill it using the command:
           </p> 
           <pre><code class="language-sh">sudo kill 29226</code></pre>-->
-          <pre><code>
+          <!-- <pre><code>
 pm2 kill
 pm2 flush
-pm2 restart app
-      </code></pre>
+pm2 start npm --name "/var/www/html/arclight/app" -- start
+      </code></pre> -->
           <p>
             Now when you log into arclight, the VNC software will use the
             self-signed cert. Because it is self-signed your browser will not

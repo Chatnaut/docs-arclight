@@ -316,8 +316,19 @@
             </p>
             <pre><code class="language-sh">
 &lt;VirtualHost *:80>
- ServerName mydomain.com
- DocumentRoot /var/www/html/arclight/
+  ServerName arcos.chatnaut.com
+  DocumentRoot /var/www/html/arclight/
+  &lt;Location "/api/">
+          ProxyPreserveHost On
+          ProxyPass http://localhost:3000/
+          ProxyPassReverse http://localhost:3000/
+  &lt;/Location>
+
+  &lt;Directory /var/www/html/arclight>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+  &lt;/Directory>
 &lt;/VirtualHost>
             </code></pre>
             
@@ -379,9 +390,12 @@
             </p>
             <pre><code class="language-sh">sudo chmod 755 /etc/letsencrypt/live</code></pre>
             <pre><code class="language-sh">sudo chmod 755 /etc/letsencrypt/archive</code></pre>
+            <p>
+              Now signin to the arclight dashboard and add the certificates paths in the individual fields.
+            <img src="../img/lets-ssl.png" alt=""></p>
 
             <p>
-              You can either decide to restart your server or restart the python
+              Now restart your server or restart the python
               process tied to noVNC to apply the certificate and key files. If
               you decide to restart the service you should be able to determine
               which process id (PID) is using port 6080. Use the following
@@ -394,11 +408,7 @@
               example, if it was PID 1386, I would use the command:
             </p>
             <pre><code class="language-sh">sudo kill 1386</code></pre>
-
-            <p>
-              Now logout and login to the arclight to restart the VNC connection
-              and the new certificate should be applied.
-            </p>
+            <p>That's it, now you can use the noVNC web console to connect to your vms.</p>
           </main>
 
           <nav class="nav-wrapper" aria-label="Page navigation">
