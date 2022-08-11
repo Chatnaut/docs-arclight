@@ -313,7 +313,25 @@ pm2 flush
 pm2 start npm --name "/var/www/html/arclight/app" -- start
       </code></pre> -->
           <p>
-            Now when you log into arclight, the VNC software will use the
+            Now login to your Arclight Dashboard. Go to the settings page and
+            add the location of the Self-Signed certificate file and key
+            file.</p>
+          <img src="../img/self-ssl.png" alt="">
+          <p>
+            Restart your server or restart the python
+            process tied to noVNC to apply the certificate and key files. If
+            you decide to restart the service you should be able to determine
+            which process id (PID) is using port 6080. Use the following
+            command:
+          </p>
+          <pre><code class="language-sh">sudo netstat -tulpn | grep 6080</code></pre>
+
+          <p>
+            Then after determining the PID number, kill the process. For
+            example, if it was PID 1386, I would use the command:
+          </p>
+          <pre><code class="language-sh">sudo kill 1386</code></pre>
+          <p>That's it, now you can use the noVNC web console to connect to your vms. the VNC software will use the
             self-signed cert. Because it is self-signed your browser will not
             trust it. To trust the certification visit your URL:6080 and click
             the Advanced button on the screen. For example, if you were using
