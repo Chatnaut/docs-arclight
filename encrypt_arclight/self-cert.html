@@ -232,7 +232,8 @@
       <div id="content" class="content">
         <main>
           <h1 id="onboarding-resources">
-            <a class="header" href="#onboarding-resources">Encrypting Arclight with self-signed certificate</a>
+            <a class="header" href="#onboarding-resources">Add Reverse Proxy & Encrypting Arclight with self-signed
+              certificate</a>
           </h1>
           <p>
             As a security recommendation, it is always a good practice to
@@ -266,29 +267,31 @@
 
           <p>Now change the permissions of the self.pem file</p>
           <pre><code class="language-sh">sudo chmod 755 self.pem</code></pre>
-          <p>Open the virtual host file for your domain using nano or your favorite text editor: 
-          <code>sudo nano /etc/apache2/sites-available/your_domain.conf</code> and paste the following along with server's ip_address</p>
-            <pre><code class="language-sh">
-              &lt;IfModule mod_ssl.c>
-                &lt;VirtualHost *:443>
-                ServerName your_server_ip
-                DocumentRoot /var/www/html/arclight/
-                
-                SSLEngine on
-                SSLCertificateFile /etc/ssl/self.pem
-                SSLCertificateKeyFile /etc/ssl/self.pem
-                        &lt;Location "/api/">
-                                ProxyPreserveHost On
-                                ProxyPass http://localhost:3000/
-                                ProxyPassReverse http://localhost:3000/
-                        &lt;/Location>
-                &lt;Directory /var/www/html/arclight>
-                    Options Indexes FollowSymLinks
-                    AllowOverride All
-                    Require all granted
-                &lt;/Directory>
-                &lt;/VirtualHost>
-                &lt;/IfModule>
+          <p>Open the virtual host file for your domain using nano or your favorite text editor:
+            <code>sudo nano /etc/apache2/sites-available/default-ssl.conf</code> and paste the following along with your
+            server ip_address
+          </p>
+          <pre><code class="language-sh">
+&lt;IfModule mod_ssl.c>
+  &lt;VirtualHost *:443>
+  ServerName your_server_ip
+  DocumentRoot /var/www/html/arclight/
+  
+  SSLEngine on
+  SSLCertificateFile /etc/ssl/self.pem
+  SSLCertificateKeyFile /etc/ssl/self.pem
+          &lt;Location "/api/">
+                  ProxyPreserveHost On
+                  ProxyPass http://localhost:3000/
+                  ProxyPassReverse http://localhost:3000/
+          &lt;/Location>
+  &lt;Directory /var/www/html/arclight>
+      Options Indexes FollowSymLinks
+      AllowOverride All
+      Require all granted
+  &lt;/Directory>
+  &lt;/VirtualHost>
+  &lt;/IfModule>
                           </code></pre>
           <p>If your current virtual host configuration does not match up, then update it accordingly. After, save and
             exit the text editor. Then, validate your changes:</p>
@@ -296,7 +299,7 @@
 
           <p>
             If you have already used arclight, you will need to kill the
-            existing VNC process. To determine the process to kill use netstat
+            existing VNC process and arc api pm2 process. To determine the process to kill use netstat
             and determine the process number that is listening on port 6080.
           </p>
           <pre><code class="language-sh">sudo netstat -tulpn | grep 6080</code></pre>
@@ -306,7 +309,11 @@
             29226, you would kill it using the command:
           </p>
           <pre><code class="language-sh">sudo kill 29226</code></pre>
-
+          <pre><code>
+pm2 kill
+pm2 flush
+pm2 restart app
+      </code></pre>
           <p>
             Now when you log into arclight, the VNC software will use the
             self-signed cert. Because it is self-signed your browser will not
