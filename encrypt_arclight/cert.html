@@ -301,10 +301,12 @@
               change the domain name:
             </p>
             <pre><code class="language-sh">sudo nano /etc/apache2/sites-available/mydomain.com.conf</code></pre>
-
             <p>
-              We will just be adding just the minimum information in the
-              configuration file. The first line below <code>&lt;VirtualHost *:80></code> tells
+              Copy and paste the below configuration along with your
+            domain name.
+            </p>
+            <p>
+              Working: The first line below <code>&lt;VirtualHost *:80></code> tells
               Apache that this configuration file will be used for HTTP traffic.
               When we configure Let’s Encrypt, the HTTPS connection (port 443)
               will be configured automatically. The second line ServerName
@@ -316,7 +318,7 @@
             </p>
             <pre><code class="language-sh">
 &lt;VirtualHost *:80>
-  ServerName arcos.chatnaut.com
+  ServerName mydomain.com
   DocumentRoot /var/www/html/arclight/
   &lt;Location "/api/">
           ProxyPreserveHost On
