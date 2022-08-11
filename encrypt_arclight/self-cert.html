@@ -237,9 +237,7 @@
           </h1>
           <p>
             As a security recommendation, it is always a good practice to
-            encrypt your the data sent across the Internet. You can encrypt
-            both your arclight connection as well as the VNC connection to
-            your virtual machines.With the Apache web server on Ubuntu you can
+            encrypt your the data sent across the Internet. With the Apache web server on Ubuntu you can
             enable https traffic using the following command:
           </p>
           <pre><code class="language-sh">sudo a2enmod ssl</code></pre>
@@ -296,8 +294,10 @@
           <p>If your current virtual host configuration does not match up, then update it accordingly. After, save and
             exit the text editor. Then, validate your changes:</p>
           <pre><code class="language-sh">sudo apache2ctl configtest</code></pre>
+          <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
+          </p>
 
-          <p>
+          <!-- <p>
             If you have already used arclight, you will need to kill the
             existing VNC process and arc api pm2 process. To determine the process to kill use netstat
             and determine the process number that is listening on port 6080.
@@ -307,8 +307,8 @@
           <p>
             Now kill the process. For example if the process was numbered
             29226, you would kill it using the command:
-          </p>
-          <pre><code class="language-sh">sudo kill 29226</code></pre>
+          </p> 
+          <pre><code class="language-sh">sudo kill 29226</code></pre>-->
           <pre><code>
 pm2 kill
 pm2 flush
