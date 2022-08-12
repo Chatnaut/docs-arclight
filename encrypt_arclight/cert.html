@@ -254,7 +254,7 @@
           </p>
           <pre><code class="language-sh">sudo nano /etc/apache2/sites-available/mydomain.com.conf</code></pre>
           <p>
-            Copy and paste the below configuration along with your
+            Remove everything and paste the below configuration along with your
             domain name.
           </p>
           <p>
@@ -306,7 +306,8 @@
             configuration changes. Use the following command:
           </p>
           <pre><code class="language-sh">sudo systemctl reload apache2</code></pre>
-
+          <pre><code class="language-sh">cd /var/www/html/arclight</code></pre>
+          <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
           <p>
             To automate the Let’s Encrypt certificate using Apache we will
             need to install the python3-certbot-apache package. Use the

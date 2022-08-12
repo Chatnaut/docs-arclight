@@ -258,7 +258,7 @@
           <p>Now change the permissions of the self.pem file</p>
           <pre><code class="language-sh">sudo chmod 755 self.pem</code></pre>
           <p>Open the virtual host file for your domain using nano or your favorite text editor:
-            <code>sudo nano /etc/apache2/sites-available/default-ssl.conf</code> and paste the following along with your
+            <code>sudo nano /etc/apache2/sites-available/default-ssl.conf</code> Remove everything and paste the following along with your
             server ip_address
           </p>
           <pre><code class="language-sh">
@@ -287,10 +287,12 @@
             exit the text editor. Then, validate your changes:</p>
           <pre><code class="language-sh">sudo apache2ctl configtest</code></pre>
           <p>
-            You will need to restart/reload the Apache web server to apply the
-            chnages. Use the following command:
+            You will need to restart/reload the Apache web server and api to apply the
+            changes. Use the following commands:
           </p>
           <pre><code class="language-sh">sudo systemctl restart apache2</code></pre>
+          <pre><code class="language-sh">cd /var/www/html/arclight</code></pre>
+          <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
           <!-- <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
           </p> -->
 
