@@ -117,7 +117,8 @@
         <li class="spacer"></li>
 
         <li class="chapter-item expanded">
-          <a href="../encrypt_arclight/index.html"><strong aria-hidden="true">3.</strong> Add Reverse Proxy & Encrypt Arclight</a>
+          <a href="../encrypt_arclight/index.html"><strong aria-hidden="true">3.</strong> Add Reverse Proxy & Encrypt
+            Arclight</a>
         </li>
         <li>
           <ol class="section">
@@ -257,7 +258,8 @@
           <p>Now change the permissions of the self.pem file</p>
           <pre><code class="language-sh">sudo chmod 755 self.pem</code></pre>
           <p>Open the virtual host file for your domain using nano or your favorite text editor:
-            <code>sudo nano /etc/apache2/sites-available/default-ssl.conf</code> Remove everything and paste the following along with your
+            <code>sudo nano /etc/apache2/sites-available/default-ssl.conf</code> Remove everything and paste the
+            following along with your
             server ip_address
           </p>
           <pre><code class="language-sh">
@@ -294,7 +296,7 @@
 pm2 kill
 pm2 flush
 cd /var/www/html/arclight
-          </code></pre>
+</code></pre>
           <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
           <!-- <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
           </p> -->
