@@ -290,7 +290,11 @@
             changes. Use the following commands:
           </p>
           <pre><code class="language-sh">sudo systemctl restart apache2</code></pre>
-          <pre><code class="language-sh">cd /var/www/html/arclight</code></pre>
+          <pre><code class="language-sh">
+pm2 kill</code></pre>
+pm2 flush</code></pre>
+cd /var/www/html/arclight
+          </code></pre>
           <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
           <!-- <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
           </p> -->
