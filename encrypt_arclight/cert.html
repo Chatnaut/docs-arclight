@@ -302,11 +302,15 @@
           <pre><code class="language-sh">sudo a2dissite 000-default.conf</code></pre>
 
           <p>
-            You will need to restart/reload the Apache web server to apply the
-            configuration changes. Use the following command:
+            You will need to restart/reload the Apache web server and api to apply the
+            changes. Use the following commands:
           </p>
           <pre><code class="language-sh">sudo systemctl reload apache2</code></pre>
-          <pre><code class="language-sh">cd /var/www/html/arclight</code></pre>
+          <pre><code class="language-sh">
+pm2 kill
+pm2 flush
+cd /var/www/html/arclight
+</code></pre>
           <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
           <p>
             To automate the Let’s Encrypt certificate using Apache we will

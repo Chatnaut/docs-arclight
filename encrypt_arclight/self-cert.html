@@ -298,26 +298,6 @@ pm2 flush
 cd /var/www/html/arclight
 </code></pre>
           <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
-          <!-- <p>To apply the reverse proxy we need to kill the Arc API PM2 process:
-          </p> -->
-
-          <!-- <p>
-            If you have already used arclight, you will need to kill the
-            existing VNC process and arc api pm2 process. To determine the process to kill use netstat
-            and determine the process number that is listening on port 6080.
-          </p>
-          <pre><code class="language-sh">sudo netstat -tulpn | grep 6080</code></pre>
-
-          <p>
-            Now kill the process. For example if the process was numbered
-            29226, you would kill it using the command:
-          </p> 
-          <pre><code class="language-sh">sudo kill 29226</code></pre>-->
-          <!-- <pre><code>
-pm2 kill
-pm2 flush
-pm2 start npm --name "/var/www/html/arclight/app" -- start
-      </code></pre> -->
           <p>
             Now login to your Arclight Dashboard. Go to the settings page and
             add the location of the Self-Signed certificate file and key
