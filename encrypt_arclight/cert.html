@@ -377,7 +377,7 @@ pm2 kill
 pm2 flush
 cd /var/www/html/arclight
 </code></pre>
-            <pre><code class="language-sh">pm2 start npm --name "arc"  --log-date-format 'DD-MM HH:mm:ss.SSS' -- start</code></pre>
+            <pre><code class="language-sh">pm2 start ecosystem.config.js</code></pre>
             <p>
               Now login to your Arclight Dashboard. Go to the settings page and
               add the location of the Let’s Encrypt certificate file and key
