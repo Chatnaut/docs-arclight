@@ -1,9 +1,9 @@
 
 {
     "name": "arclight",
-    "version": "2.0.0",
-    "release-date": "01-07-2022",
-    "extension":"major",
+    "version": "2.0.1",
+    "release-date": "07-09-2022",
+    "extension":"patch",
     "state": "stable",
     "license": "MIT",
     "description": "Build power and intelligence in to your application.",
