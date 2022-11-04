@@ -241,11 +241,10 @@
             information.
           </p>
           <p>
-            Install Arclight by running the following commands:
+            Install Arclight by running the following command:
           </p>
-          <pre><code class="language-sh">wget https://raw.githubusercontent.com/Chatnaut/Arclight/develop/startup.sh</code></pre>
-          <pre><code class="language-sh">chmod +x startup.sh</code></pre>
-          <pre><code class="language-sh">./startup.sh</code></pre>
+          <pre><code class="language-sh">wget - q https://raw.githubusercontent.com/Chatnaut/Arclight/develop/startup.sh; sudo bash ./startup.sh
+          </code></pre>
           <p>
             What the above command does is download the startup script and make it executable to run the script that
             checks if the system supports Arclight and if it does, it will install the necessary QEMU+KVM packages,
