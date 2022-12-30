@@ -236,18 +236,8 @@
           </h1>
           <p>
             As a security recommendation, it is always a good practice to
-            encrypt the data sent across the Internet. You can encrypt both
-            your arclight connection as well as the VNC console connection to
-            your virtual machines. With the Apache web server on Ubuntu you
-            can enable HTTPS traffic using the following command:
-          </p>
-          <pre><code class="language-sh">sudo a2enmod ssl</code></pre>
-
-          <p>
-            If you are using a domain name, you can use a Certificate
-            Authority such as Let’s Encrypt to create a free validated SSL
-            certificate. To get started we will need to create an Apache site
-            configuration file for your domain. We will using the domain
+            encrypt the data sent across the Internet. Use Let’s Encrypt to create a free validated SSL
+            certificate for your domain. We will using the domain
             mydomain.com for this example. The new config file should end with
             the .conf extension and be located in the
             <code>/etc/apache2/sites-available/</code> directory. To create a
@@ -316,8 +306,7 @@
 
           <p>
             To create the SSL Certificate and Apache configuration file run
-            the following command, Select your domain and choose redirect all
-            traffic to the HTTPS protocol.
+            the following command, Select your domain and choose No redirect in the last one.
           </p>
           <pre><code class="language-sh">sudo certbot --apache</code></pre>
           <p>Restart arc api to save changes.</p>
